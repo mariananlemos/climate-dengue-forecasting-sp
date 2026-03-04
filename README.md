@@ -1,4 +1,4 @@
-# 🦟 Climate & Dengue Forecasting — São Paulo
+# Climate & Dengue Forecasting — São Paulo
 
 Analysis of the relationship between climate variables (temperature and precipitation) and dengue cases in the city of São Paulo (2015–2025), with a Machine Learning-based predictive model.
 
@@ -6,7 +6,7 @@ Analysis of the relationship between climate variables (temperature and precipit
 
 ---
 
-## 📋 About the Project
+## About the Project
 
 This project investigates how temperature and precipitation influence dengue case dynamics in São Paulo. The full pipeline includes:
 
@@ -17,7 +17,7 @@ This project investigates how temperature and precipitation influence dengue cas
 5. **Interactive dashboard** — Plotly with historical data, forecasts, correlation, and feature importance
 6. **Risk map** — Folium heatmap showing vulnerability by district
 
-## 🗂️ Structure
+## Structure
 
 ```
 ├── climate_dengue_forecasting_sp.ipynb   # Main notebook (full pipeline)
@@ -35,7 +35,7 @@ This project investigates how temperature and precipitation influence dengue cas
     └── importancia.png                   # Feature importance
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Google Colab (recommended)
 Click the **Open In Colab** badge above and run all cells in order.
@@ -46,7 +46,7 @@ pip install pandas numpy scipy matplotlib seaborn plotly folium scikit-learn job
 jupyter notebook climate_dengue_forecasting_sp.ipynb
 ```
 
-## 🔬 Methodology
+## Methodology
 
 | Step | Description |
 |------|-------------|
@@ -57,7 +57,7 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 | **Model** | Random Forest (200 trees, max_depth=6) with lag and seasonality features |
 | **Validation** | TimeSeriesSplit (4 folds) — respects temporal order |
 
-## 📊 Key Visualizations
+## Key Visualizations
 
 - **Time series** — Cases, temperature, and precipitation (2015–2025)
 - **Seasonality** — Peaks in Jan–Apr correlated with heat and rainfall
@@ -66,7 +66,7 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 - **4-panel dashboard** — Historical + forecast + correlation + feature importance
 - **Risk map** — Vulnerability by São Paulo district
 
-## 📦 Dependencies
+## Dependencies
 
 - Python 3.8+
 - pandas, numpy, scipy
@@ -75,18 +75,18 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 - scikit-learn
 - joblib, requests
 
-## 📝 Data Sources
+## Data Sources
 
 - **Dengue cases (SP)**: [InfoDengue — Epidemiological Surveillance](https://info.dengue.mat.br/)
 - **Average temperature (SP)**: [São Paulo City Hall / SMUL-Geoinfo](https://drive.prefeitura.sp.gov.br/cidade/secretarias/upload/chamadas/temp_mdia-precipitacao_1650654282.htm)
 - **Meteorological data**: [BDMEP/INMET](https://bdmep.inmet.gov.br/)
 
-## ⚠️ Limitations
+## Limitations
 
 - Temperature data for 2022–2025 are projections based on historical averages
 - Precipitation uses climatological normals with simulated variation
 - Correlation ≠ causation — climate creates favorable conditions for *Aedes aegypti*, but transmission also depends on active viral circulation and epidemiological surveillance
 
-## 📄 License
+## License
 
 MIT
