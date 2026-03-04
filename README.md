@@ -86,7 +86,3 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 - Temperature data for 2022–2025 are projections based on historical averages
 - Precipitation uses climatological normals with simulated variation
 - Correlation ≠ causation — climate creates favorable conditions for *Aedes aegypti*, but transmission also depends on active viral circulation and epidemiological surveillance
-
-## License
-
-MIT
