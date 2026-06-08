@@ -13,7 +13,7 @@ This project investigates how temperature and precipitation influence dengue cas
 1. **Data collection** — weekly cases via InfoDengue API + climate data from IAG/USP
 2. **Exploratory analysis** — time series, seasonality, and heatmaps
 3. **Statistical correlation** — Spearman with temporal lag (0–3 months)
-4. **Predictive model** — temporal benchmark comparing baseline, Ridge, Poisson and Random Forest, with the winner selected by TimeSeriesSplit / MAE
+4. **Predictive model** — temporal benchmark comparing baseline, Ridge, Poisson and modelos de ensemble (opcionais), with the winner selected by TimeSeriesSplit / MAE
 5. **Interactive dashboard** — Plotly with historical data, forecasts, correlation, and feature importance
 6. **Risk map** — illustrative Folium heatmap showing relative vulnerability by district
 
@@ -54,7 +54,7 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 | **Climate data** | Monthly average temperature (IAG/USP, 2015–2021) + projection for 2022–2025 |
 | **Precipitation** | IAG/USP climatological normals with stochastic variation |
 | **Correlation** | Spearman (non-parametric) with lags from 0 to 3 months |
-| **Model** | Temporal benchmark across baseline, Ridge, Poisson and Random Forest; the selected model is chosen by temporal MAE |
+| **Model** | Temporal benchmark across baseline, Ridge, Poisson and cautious ensembles; the selected model is chosen by temporal MAE |
 | **Validation** | TimeSeriesSplit (4 folds) — respects temporal order |
 
 ## Key Visualizations
@@ -86,7 +86,7 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 - Temperature data for 2022–2025 are projections based on historical averages
 - Precipitation uses climatological normals with simulated variation
 - The forecast is a scenario based on persistent climate inputs; it is not a deterministic epidemiological forecast
-- With a small monthly sample, simpler regularized models can outperform Random Forest, so the final choice should be driven by temporal cross-validation
+- With a small monthly sample, simpler regularized models often outperform complex ensembles, so the final choice should be driven by temporal cross-validation and fold stability
 - Correlation ≠ causation — climate creates favorable conditions for *Aedes aegypti*, but transmission also depends on active viral circulation and epidemiological surveillance
 
 ## Deployment
