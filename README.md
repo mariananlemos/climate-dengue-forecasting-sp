@@ -13,9 +13,9 @@ This project investigates how temperature and precipitation influence dengue cas
 1. **Data collection** — weekly cases via InfoDengue API + climate data from IAG/USP
 2. **Exploratory analysis** — time series, seasonality, and heatmaps
 3. **Statistical correlation** — Spearman with temporal lag (0–3 months)
-4. **Predictive model** — Random Forest with temporal validation (TimeSeriesSplit)
+4. **Predictive model** — temporal benchmark comparing baseline, Ridge, Poisson and Random Forest, with the winner selected by TimeSeriesSplit / MAE
 5. **Interactive dashboard** — Plotly with historical data, forecasts, correlation, and feature importance
-6. **Risk map** — Folium heatmap showing vulnerability by district
+6. **Risk map** — illustrative Folium heatmap showing relative vulnerability by district
 
 ## Structure
 
@@ -25,7 +25,7 @@ This project investigates how temperature and precipitation influence dengue cas
 └── (generated after execution)
     ├── dengue_sp_2015_2025.csv           # Consolidated dataset
     ├── previsoes_6meses.csv              # 6-month forecast
-    ├── modelo_dengue_sp.pkl              # Trained model (Random Forest)
+    ├── modelo_dengue_sp.pkl              # Trained model selected by temporal benchmark
     ├── dashboard_dengue_sp.html          # Interactive dashboard (Plotly)
     ├── mapa_dengue_sp.html               # Risk map (Folium)
     ├── sazonalidade.png                  # Seasonality chart
@@ -54,7 +54,7 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 | **Climate data** | Monthly average temperature (IAG/USP, 2015–2021) + projection for 2022–2025 |
 | **Precipitation** | IAG/USP climatological normals with stochastic variation |
 | **Correlation** | Spearman (non-parametric) with lags from 0 to 3 months |
-| **Model** | Random Forest (200 trees, max_depth=6) with lag and seasonality features |
+| **Model** | Temporal benchmark across baseline, Ridge, Poisson and Random Forest; the selected model is chosen by temporal MAE |
 | **Validation** | TimeSeriesSplit (4 folds) — respects temporal order |
 
 ## Key Visualizations
@@ -63,8 +63,8 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 - **Seasonality** — Peaks in Jan–Apr correlated with heat and rainfall
 - **Year × month heatmap** — Identifies outbreaks by period
 - **Correlation by lag** — Temperature precedes cases by ~1 month
-- **4-panel dashboard** — Historical + forecast + correlation + feature importance
-- **Risk map** — Vulnerability by São Paulo district
+- **4-panel dashboard** — Historical + forecast + correlation + feature importance from the selected model
+- **Risk map** — illustrative relative vulnerability by São Paulo district
 
 ## Dependencies
 
@@ -85,4 +85,11 @@ jupyter notebook climate_dengue_forecasting_sp.ipynb
 
 - Temperature data for 2022–2025 are projections based on historical averages
 - Precipitation uses climatological normals with simulated variation
+- The forecast is a scenario based on persistent climate inputs; it is not a deterministic epidemiological forecast
+- With a small monthly sample, simpler regularized models can outperform Random Forest, so the final choice should be driven by temporal cross-validation
 - Correlation ≠ causation — climate creates favorable conditions for *Aedes aegypti*, but transmission also depends on active viral circulation and epidemiological surveillance
+
+## Deployment
+
+- The public dashboard is served from `site/`
+- `vercel.json` is configured to publish that folder directly

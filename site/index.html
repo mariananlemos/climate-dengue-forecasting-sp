@@ -84,10 +84,10 @@
   <div class="header-left">
     <h1>&#129439; Dengue <span>São Paulo</span></h1>
     <span class="badge">2015 – 2025</span>
-    <p>Análise de correlação climática &amp; previsão com Random Forest — Dados: InfoDengue · IAG/USP · INMET</p>
+    <p>Análise de correlação climática &amp; previsão com o modelo selecionado — Dados: InfoDengue · IAG/USP · INMET</p>
   </div>
   <div class="header-right">
-    <div class="tag">&#128202; Random Forest</div>
+    <div class="tag">&#128202; Modelo selecionado</div>
     <div class="tag">&#127777;&#65039; Clima × Dengue</div>
   </div>
 </div>
@@ -109,7 +109,7 @@
     <div class="kpi">
       <div class="label">MAE do Modelo</div>
       <div class="value">~3.800</div>
-      <div class="sub">casos/mês · Random Forest</div>
+      <div class="sub">casos/mês · modelo selecionado</div>
     </div>
     <div class="kpi">
       <div class="label">Temp. Média</div>
@@ -150,14 +150,14 @@
   <div class="grid g2">
     <div class="card">
       <h3>&#127942; Importância das Variáveis — Top 10</h3>
-      <div class="sub">Random Forest · feature importance</div>
+      <div class="sub">modelo selecionado · feature importance</div>
       <canvas id="chartImp"></canvas>
     </div>
     <div class="card">
       <h3>&#128197; Previsão — Próximos 6 Meses</h3>
-      <div class="sub">modelo Random Forest + intervalo de confiança 80%</div>
+      <div class="sub">modelo selecionado + faixa de cenário 80%</div>
       <table class="tbl">
-        <thead><tr><th>Mês/Ano</th><th>Casos</th><th>IC 80%</th><th>Alerta</th></tr></thead>
+        <thead><tr><th>Mês/Ano</th><th>Casos</th><th>Faixa 80%</th><th>Alerta</th></tr></thead>
         <tbody id="tblPrev"></tbody>
       </table>
     </div>
@@ -171,8 +171,8 @@
       <canvas id="chartHeat"></canvas>
     </div>
     <div class="card">
-      <h3>&#128205; Mapa de Vulnerabilidade — Distritos de SP</h3>
-      <div class="sub">Estimativa de risco relativo por região · ano de pico</div>
+      <h3>&#128205; Mapa Ilustrativo de Vulnerabilidade — Distritos de SP</h3>
+      <div class="sub">Proxy heurístico de risco relativo por região · ano de pico</div>
       <div id="mapa"></div>
     </div>
   </div>
@@ -231,7 +231,7 @@ const precipNormal = [237,215,162,74,74,54,43,38,80,123,146,202];
 const corrTemp   = [0.42, 0.47, 0.38, 0.29];
 const corrPrecip = [0.35, 0.31, 0.22, 0.14];
 
-// Importância das variáveis (Random Forest)
+// Importância das variáveis (modelo selecionado)
 const impNomes = ['casos_lag1','casos_ma3','casos_lag2','temp_lag1','precip_lag1','seno_mes','casos_lag3','cosseno_mes','temp_lag2','precip_lag2'];
 const impVals  = [0.42, 0.18, 0.12, 0.08, 0.06, 0.04, 0.03, 0.03, 0.02, 0.02];
 
